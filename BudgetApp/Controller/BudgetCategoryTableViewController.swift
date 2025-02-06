@@ -48,6 +48,7 @@ class BudgetCategoryTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addBudgetCategoryButton
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "My Budget"
+        addBudgetCategoryButton.tintColor = UIColor.black
     }
     
     // UITableViewDataSource Delegate functions
