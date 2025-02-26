@@ -2,12 +2,13 @@ import Foundation
 
 extension String {
     var isNumeric: Bool {
-        Double(self) != nil
+        return Double(self) != nil
     }
+    
     func isGreaterThan(_ value: Double) -> Bool {
-        guard self.isNumeric else {
+        guard let number = Double(self) else {
             return false
         }
-        return Double(self)! > value
+        return number > value
     }
 }

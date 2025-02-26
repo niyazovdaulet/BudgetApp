@@ -1,10 +1,13 @@
 import Foundation
 
 extension Double {
-    
-    func formatAsCurrency() -> String {
+    private static let currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
-        return formatter.string(from: NSNumber(value: self)) ?? "0.00"
+        return formatter
+    }()
+    
+    func formatAsCurrency() -> String {
+        return Double.currencyFormatter.string(from: NSNumber(value: self)) ?? "0.00"
     }
 }

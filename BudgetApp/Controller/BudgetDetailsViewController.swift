@@ -1,7 +1,15 @@
 import UIKit
 import CoreData
 
-class BudgetDetailsViewController: UIViewController {
+class BudgetDetailsViewController: UIViewController, BudgetCategoryUpdatedDelegate {
+
+    func didUpdateBudgetCategory() {
+        title = budgetCategory.name // Update the title
+        amountLabel.text = budgetCategory.amount.formatAsCurrency() // Update budget amount label
+        tableView.reloadData() // Refresh transactions if needed
+    }
+
+    
     private var persistentContainer: NSPersistentContainer
     private var fetchedResultsController: NSFetchedResultsController<Transaction>!
     private var budgetCategory: BudgetCategory
@@ -132,7 +140,19 @@ class BudgetDetailsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         updateTransactionTotal()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped))
+
     }
+    @objc private func editButtonTapped() {
+        let editVC = EditBudgetCategoryViewController(
+            persistentContainer: persistentContainer,
+            budgetCategory: budgetCategory
+        )
+        editVC.delegate = self // Assign self as delegate
+        navigationController?.pushViewController(editVC, animated: true)
+    }
+
+
     
     private var isFormValid: Bool {
         guard let name = nameTextField.text, let amount = amountTextField.text else {
