@@ -73,8 +73,8 @@ struct BudgetTableViewCellRepresentable: UIViewRepresentable {
     }
 }
 
-struct BudgetTableViewCell_Previews: PreviewProvider {
-    static var previews: some View {
-        BudgetTableViewCellRepresentable()
-    }
-}
+//struct BudgetTableViewCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BudgetTableViewCellRepresentable()
+//    }
+

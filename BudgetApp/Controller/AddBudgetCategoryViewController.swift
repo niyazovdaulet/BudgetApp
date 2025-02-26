@@ -26,6 +26,9 @@ class AddBudgetCategoryViewController: UIViewController {
         let button = UIButton(configuration: config)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Save", for: .normal)
+        button.backgroundColor = .black
+        button.tintColor = .white
+        button.layer.cornerRadius = 16
         return button
     }()
     lazy var errorMessageLabel: UILabel = {
